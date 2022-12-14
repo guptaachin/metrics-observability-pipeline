@@ -2,37 +2,37 @@ global:
   scrape_interval: '10s'
 
 scrape_configs:
-  - job_name: "vmselect-self-check"
+  - job_name: "prom-vmselect-self-check"
     static_configs:
       - targets: ['vmselect:8481']
         labels:
           group: 'selfcheck'
 
-  - job_name: "vmalert-self-check"
+  - job_name: "prom-vmalert-self-check"
     static_configs:
       - targets: ['vmalert:8880']
         labels:
           group: 'selfcheck'
 
-  - job_name: "vminsert-self-check"
+  - job_name: "prom-vminsert-self-check"
     static_configs:
       - targets: ['vminsert:8480']
         labels:
           group: 'selfcheck'
 
-  - job_name: "vmagent-self-check"
+  - job_name: "prom-vmagent-self-check"
     static_configs:
       - targets: ['vmagent:8429']
         labels:
           group: 'selfcheck'
 
-  - job_name: "vmauth-self-check"
+  - job_name: "prom-vmauth-self-check"
     static_configs:
       - targets: ['vmauth:8427']
         labels:
           group: 'selfcheck'
 
-  - job_name: "sample-metrics"
+  - job_name: "prom-sample-metrics"
     static_configs:
       - targets: ['sample-metrics:8000']
         labels:
@@ -40,7 +40,7 @@ scrape_configs:
 
 
   # node exporter to read sys stats from host machine
-  - job_name: "node-exporter"
+  - job_name: "prom-node-exporter"
     # path to metrics
     metrics_path: '/metrics'
     static_configs:
@@ -50,10 +50,13 @@ scrape_configs:
           group: 'sys-stats-group'
 
 remote_write:
-  - url: 
-    oauth2:
-      client_id: 
-      client_secret: 
-      token_url: 
+  - url: http://vmauth:8427
+    basic_auth: 
+      username: "achingupta"
+      password: "password"
+    # oauth2:
+    #   client_id: 
+    #   client_secret: 
+    #   token_url: 
       # endpoint_params: 
         # grant_type: 'client_credentials'

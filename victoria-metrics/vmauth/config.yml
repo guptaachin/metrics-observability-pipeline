@@ -3,6 +3,6 @@
 # Such usernames can be differentiated by `name` option.
 
 users:
-- bearer_token: "XXXX"
-  url_prefix:
-  - "http://vminsert:8480/insert/0/prometheus"
+- username: "achingupta"
+  password: "password"
+  url_prefix: "http://vminsert:8480/insert/0/prometheus"

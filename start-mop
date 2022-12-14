@@ -1,2 +1,2 @@
 #!/bin/bash -x
-docker-compose -f ./docker-compose-mop.yaml up -d --force-recreate --build --remove-orphans
+docker-compose -f ./docker-compose-mop.yaml up -d --force-recreate --build --remove-orphans --scale prometheus=0 vmauth=0

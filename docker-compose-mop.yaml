@@ -14,7 +14,7 @@ services:
       - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
     command:
       - '--enable-feature=agent'
-      - '--config.file=/etc/prometheus/config.yml'
+      - '--config.file=/etc/prometheus/prometheus.yml'
       - '--web.enable-lifecycle'
       - '--web.console.libraries=/usr/share/prometheus/console_libraries'
       - '--web.console.templates=/usr/share/prometheus/consoles'
@@ -25,23 +25,23 @@ services:
       - mop_network
     restart: always
 
-  # # local vmagent instance to collect data
-  # vmagent:
-  #   container_name: 'mop-vmagent'
-  #   image: victoriametrics/vmagent:v1.85.0
-  #   depends_on:
-  #     - "vminsert"
-  #   ports:
-  #     - 8429:8429
-  #   volumes:
-  #     - vmagentdata:/vmagentdata
-  #     - ./victoria-metrics/vmagent/prometheus.yml:/etc/prometheus/prometheus.yml
-  #   command:
-  #     - "--promscrape.config=/etc/prometheus/prometheus.yml"
-  #     - "--remoteWrite.url=http://vminsert:8480/insert/0/prometheus/api/v1/write"
-  #   networks:
-  #     - mop_network
-  #   restart: always
+  # local vmagent instance to collect data
+  vmagent:
+    container_name: 'mop-vmagent'
+    image: victoriametrics/vmagent:v1.85.0
+    depends_on:
+      - "vminsert"
+    ports:
+      - 8429:8429
+    volumes:
+      - vmagentdata:/vmagentdata
+      - ./victoria-metrics/vmagent/prometheus.yml:/etc/prometheus/prometheus.yml
+    command:
+      - "--promscrape.config=/etc/prometheus/prometheus.yml"
+      - "--remoteWrite.url=http://vminsert:8480/insert/0/prometheus/api/v1/write"
+    networks:
+      - mop_network
+    restart: always
 
   telegraf:
     build:
