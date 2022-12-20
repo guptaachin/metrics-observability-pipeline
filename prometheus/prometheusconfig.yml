@@ -51,12 +51,17 @@ scrape_configs:
 
 remote_write:
   - url: http://vmauth:8427
-    basic_auth: 
-      username: "achingupta"
-      password: "password"
+    # basic_auth: 
+    #   username: "achingupta"
+    #   password: "password"
     # oauth2:
-    #   client_id: 
-    #   client_secret: 
-    #   token_url: 
-      # endpoint_params: 
-        # grant_type: 'client_credentials'
+    #   client_id: 0oa7n11raywuhVNpp5d7
+    #   client_secret: rx0BZVTpNBose1gOUL30hJbyQe28FvaZ14Z86OXB
+    #   scopes:
+    #     - 'customScope'
+    #   token_url: https://dev-56497839.okta.com/oauth2/default/v1/token
+    #   endpoint_params: 
+    #     grant_type: 'client_credentials'
+    authorization:
+      type: "Bearer"
+      credentials: "eyJraWQiOiJjU3Rab3dCYVlJMWkwTm9MVnV5WmhydDZXdm13N3hwcVFuSXNVSWwxR21FIiwiYWxnIjoiUlMyNTYifQ.eyJ2ZXIiOjEsImp0aSI6IkFULmhaVFZHYmd5SmlFQnlkbXdRZ25YNmFVaXJGeWhldFBSQnZ6YmRsdHJWWGMiLCJpc3MiOiJodHRwczovL2Rldi01NjQ5NzgzOS5va3RhLmNvbS9vYXV0aDIvZGVmYXVsdCIsImF1ZCI6ImFwaTovL2RlZmF1bHQiLCJpYXQiOjE2NzEwNjM0NDQsImV4cCI6MTY3MTA2NzA0NCwiY2lkIjoiMG9hN24xMXJheXd1aFZOcHA1ZDciLCJzY3AiOlsiY3VzdG9tU2NvcGUiXSwic3ViIjoiMG9hN24xMXJheXd1aFZOcHA1ZDcifQ.FjdOZQBFuH8ekTHy5JHyz0yC2zzFTh9quLQ6U9kVXGd3nEahMknIKSM-Tzw7yPMmtXtzS7XHmul_TJdDxirtiyefDhyMxyk_uSLTNEgpxa2yqXCPWsfE6f4GCRy1_KIGnm-SsucZe64Nn1POZwbOfIWb8OMVre26gPThQybzfqHVVyz49zSb5-9OsJprkSkqrq5Vkm_V5PVQ3jGM0AGoGa7mftlkgTl2UPwst89-jLIfpGU7_jSiPGXwl8-BAN6WHavk1eLDfT_1VFcUOi3_BOXfRrfj4a8DozkBoWHClxdDQpBo8hBMS2cJLJehsfuW1QEIE3FmvzRltOZkiBeFPg"

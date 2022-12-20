@@ -11,7 +11,7 @@ services:
     image: prom/prometheus:v2.40.6
     volumes:
       - prometheusdata:/prometheus
-      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./prometheus/prometheusconfig.yml:/etc/prometheus/prometheus.yml
     command:
       - '--enable-feature=agent'
       - '--config.file=/etc/prometheus/prometheus.yml'
@@ -35,7 +35,7 @@ services:
       - 8429:8429
     volumes:
       - vmagentdata:/vmagentdata
-      - ./victoria-metrics/vmagent/prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./victoria-metrics/vmagent/vmagentconfig.yml:/etc/prometheus/prometheus.yml
     command:
       - "--promscrape.config=/etc/prometheus/prometheus.yml"
       - "--remoteWrite.url=http://vminsert:8480/insert/0/prometheus/api/v1/write"
