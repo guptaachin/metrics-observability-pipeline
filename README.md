@@ -1,4 +1,4 @@
-<!-- Improved compatibility of back to top link: See: https://github.com/knowledge-transfer-org/metrics-observability-pipeline/pull/73 -->
+<!-- Improved compatibility of back to top link: See: https://github.com/guptaachin/metrics-observability-pipeline/pull/73 -->
 <a name="readme-top"></a>
 <!--
 *** Thanks for checking out the merics-observability-pipeline. If you have a suggestion
@@ -30,7 +30,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/knowledge-transfer-org/metrics-observability-pipeline">
+  <a href="https://github.com/guptaachin/metrics-observability-pipeline">
     <img src="images/logo.jpg" alt="Logo" width="135" height="80">
   </a>
 
@@ -39,9 +39,9 @@
   <p align="center">
     Set up your local Observability - metrics pipeline
     <br />
-    <a href="https://github.com/knowledge-transfer-org/metrics-observability-pipeline/issues">Report Bug</a>
+    <a href="https://github.com/guptaachin/metrics-observability-pipeline/issues">Report Bug</a>
     ·
-    <a href="https://github.com/knowledge-transfer-org/metrics-observability-pipeline/issues">Request Feature</a>
+    <a href="https://github.com/guptaachin/metrics-observability-pipeline/issues">Request Feature</a>
   </p>
 </div>
 
@@ -136,7 +136,7 @@ Let's try this hands on. To get started on setting up your own pipeline, you wil
 
 1. Clone the repo
    ```
-   git clone https://github.com/knowledge-transfer-org/metrics-observability-pipeline.git
+   git clone https://github.com/guptaachin/metrics-observability-pipeline.git
    ```
 2. Change directoy into `metrics-observability-pipeline`
    ```
@@ -245,11 +245,6 @@ Open source libraries like datadog and prometheus-client and tools listed here <
 <!-- CONTACT -->
 ## Contact
 Achin Gupta - [Github](https://github.com/guptaachin)
-<br>
-Email - achin.pu.usc@gmail.com 
-<br>
-Other helpful repos under [knowledge-transfer-org](https://github.com/knowledge-transfer-org/)
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
@@ -265,15 +260,15 @@ Other helpful repos under [knowledge-transfer-org](https://github.com/knowledge-
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [contributors-shield]: https://img.shields.io/github/contributors/github_username/repo_name.svg?style=for-the-badge
-[contributors-url]: https://github.com/knowledge-transfer-org/metrics-observability-pipeline/graphs/contributors
+[contributors-url]: https://github.com/guptaachin/metrics-observability-pipeline/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/othneildrew/Best-README-Template.svg?style=for-the-badge
-[forks-url]: https://github.com/knowledge-transfer-org/metrics-observability-pipeline/network/members
+[forks-url]: https://github.com/guptaachin/metrics-observability-pipeline/network/members
 [stars-shield]: https://img.shields.io/github/stars/othneildrew/Best-README-Template.svg?style=for-the-badge
-[stars-url]: https://github.com/knowledge-transfer-org/metrics-observability-pipeline/stargazers
+[stars-url]: https://github.com/guptaachin/metrics-observability-pipeline/stargazers
 [issues-shield]: https://img.shields.io/github/issues/othneildrew/Best-README-Template.svg?style=for-the-badge
-[issues-url]: https://github.com/knowledge-transfer-org/metrics-observability-pipeline/issues
+[issues-url]: https://github.com/guptaachin/metrics-observability-pipeline/issues
 [license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
-[license-url]: https://github.com/knowledge-transfer-org/metrics-observability-pipeline/blob/main/LICENSE
+[license-url]: https://github.com/guptaachin/metrics-observability-pipeline/blob/main/LICENSE
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/achin-gupta-63b0aa128/
 [product-screenshot]: images/screenshot.png
