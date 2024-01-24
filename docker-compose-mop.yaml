@@ -8,7 +8,7 @@ services:
   # local prometheus instance to collect data
   vmagent:
     container_name: 'mop-vmagent'
-    image: victoriametrics/vmagent:v1.83.1
+    image: victoriametrics/vmagent:v1.93.10
     depends_on:
       - "vminsert"
     ports:
@@ -62,7 +62,7 @@ services:
   # Victoria metrics cluster
   vmstorage:
     container_name: 'mop-vmstorage'
-    image: victoriametrics/vmstorage:v1.83.1-cluster
+    image: victoriametrics/vmstorage:v1.93.10-cluster
     ports:
       - 8482
       - 8400
@@ -77,7 +77,7 @@ services:
 
   vminsert:
     container_name: 'mop-vminsert'
-    image: victoriametrics/vminsert:v1.83.1-cluster
+    image: victoriametrics/vminsert:v1.93.10-cluster
     depends_on:
       - "vmstorage"
     command:
@@ -90,7 +90,7 @@ services:
 
   vmselect:
     container_name: 'mop-vmselect'
-    image: victoriametrics/vmselect:v1.83.1-cluster
+    image: victoriametrics/vmselect:v1.93.10-cluster
     depends_on:
       - "vmstorage"
     command:
@@ -104,7 +104,7 @@ services:
 
   vmalert:
     container_name: 'mop-vmalert'
-    image: victoriametrics/vmalert:v1.83.1
+    image: victoriametrics/vmalert:v1.93.10
     depends_on:
       - "vmselect"
     ports:
