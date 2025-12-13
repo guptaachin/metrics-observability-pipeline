@@ -56,15 +56,29 @@ services:
       - "./grafana/provisioning:/etc/grafana/provisioning"
     networks:
       - mop_network
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:3000/api/health || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
 
   # Grafana MCP Server - Model Context Protocol server for AI-driven Grafana interactions
   # Note: You need to create a Grafana service account token and set it as GRAFANA_SERVICE_ACCOUNT_TOKEN
   # See: https://grafana.com/docs/grafana/latest/administration/service-accounts/#add-a-token-to-a-service-account-in-grafana
+  # To create a service account token:
+  # 1. Log into Grafana at http://localhost:3000
+  # 2. Go to Administration -> Service Accounts
+  # 3. Create a new service account with Editor role (or appropriate permissions)
+  # 4. Generate a token for the service account
+  # 5. Set it as: export GRAFANA_SERVICE_ACCOUNT_TOKEN=your-token-here
+  #    Or create a .env file with: GRAFANA_SERVICE_ACCOUNT_TOKEN=your-token-here
   grafana-mcp:
     container_name: 'mop-grafana-mcp'
     image: mcp/grafana:latest
     depends_on:
-      - "grafana"
+      grafana:
+        condition: service_healthy
     environment:
       - GRAFANA_URL=http://grafana:3000
       # Set GRAFANA_SERVICE_ACCOUNT_TOKEN as an environment variable or in .env file
@@ -77,6 +91,12 @@ services:
     restart: always
     networks:
       - mop_network
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:8000/healthz || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
 
   # Victoria metrics cluster
   vmstorage:
