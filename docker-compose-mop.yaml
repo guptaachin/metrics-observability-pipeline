@@ -57,6 +57,27 @@ services:
     networks:
       - mop_network
 
+  # Grafana MCP Server - Model Context Protocol server for AI-driven Grafana interactions
+  # Note: You need to create a Grafana service account token and set it as GRAFANA_SERVICE_ACCOUNT_TOKEN
+  # See: https://grafana.com/docs/grafana/latest/administration/service-accounts/#add-a-token-to-a-service-account-in-grafana
+  grafana-mcp:
+    container_name: 'mop-grafana-mcp'
+    image: mcp/grafana:latest
+    depends_on:
+      - "grafana"
+    environment:
+      - GRAFANA_URL=http://grafana:3000
+      # Set GRAFANA_SERVICE_ACCOUNT_TOKEN as an environment variable or in .env file
+      # Example: GRAFANA_SERVICE_ACCOUNT_TOKEN=your-token-here
+      - GRAFANA_SERVICE_ACCOUNT_TOKEN=${GRAFANA_SERVICE_ACCOUNT_TOKEN:-}
+      # Optional: For multi-organization support
+      # - GRAFANA_ORG_ID=1
+    ports:
+      - '8001:8000'
+    restart: always
+    networks:
+      - mop_network
+
   # Victoria metrics cluster
   vmstorage:
     container_name: 'mop-vmstorage'
