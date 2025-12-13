@@ -115,6 +115,7 @@ Here is a list of all the open source tools we will use.
   * [vmcluster][vmcluster-url]
   * [vmalert][vmalert-url]
 * [Grafana][Grafana-url]
+* [Grafana MCP Server][GrafanaMCP-url]
 * [Telegraf][Telegraf-url]
 * [Prometheus Alert Manager][promalertmanager-url]
 * [Docker][docker-url]
@@ -354,6 +355,7 @@ Achin Gupta - [Github](https://github.com/guptaachin)
 ## Acknowledgments
 * [Victoria Metrics][VictoriaMetrics-url]
 * [Grafana][Grafana-url]
+* [Grafana MCP Server][GrafanaMCP-url]
 * [Telegraf][Telegraf-url]
 * [Prometheus Alert Manager][promalertmanager-url]
 * [Docker][docker-url]
@@ -380,6 +382,7 @@ Achin Gupta - [Github](https://github.com/guptaachin)
 [vmalert-url]: https://docs.victoriametrics.com/vmalert.html
 [vmagent-url]: https://docs.victoriametrics.com/vmagent.html
 [Grafana-url]: https://grafana.com/
+[GrafanaMCP-url]: https://github.com/grafana/mcp-grafana
 [Telegraf-url]: https://www.influxdata.com/time-series-platform/telegraf/
 [vmcluster-url]: https://docs.victoriametrics.com/Cluster-VictoriaMetrics.html
 [promalertmanager-url]: https://prometheus.io/docs/alerting/latest/alertmanager/
