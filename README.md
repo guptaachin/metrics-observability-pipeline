@@ -65,6 +65,7 @@
         <li><a href="#installation">Installation</a></li>
         <ul>
           <li><a href="#access-grafana">Access Grafana [Best Part]</a></li>
+          <li><a href="#integrate-grafana-mcp-server-with-cursor">Integrate Grafana MCP Server with Cursor</a></li>
         </ul>
         <li><a href="#install-a-node-exporter-on-your-host-machine-for-exporting-your-machine-system-stats">Install a node exporter</a></li>
       </ul>
@@ -100,6 +101,7 @@ This repo will help you set up a simple and complete observability pipeline in y
 4. Set up a vizualization interface to be able to plot these metrics in using MetricsQL (Victoria Metrics query language)
 5. Set up an alerts rules evaluator.
 6. Set up an alerts manager to send notifications and manage the evaluated alert rules.
+7. Set up a Grafana MCP Server for AI-driven interactions with Grafana through Model Context Protocol (MCP).
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
@@ -182,6 +184,108 @@ After the pipeline is up and running
   ```
 You can change these login credentials in `grafana.ini` file under `grafana` directory.
 4. After logging in try looking at one of the precreated victoria metrics health dashbord by heading over to `http://localhost:3000/d/wNf0q_kZk/victoriametrics?orgId=1&refresh=30s`
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+#### Integrate Grafana MCP Server with Cursor
+
+The pipeline includes a [Grafana MCP Server](https://github.com/grafana/mcp-grafana) that enables AI-driven interactions with your Grafana instance through the Model Context Protocol (MCP). This allows you to query dashboards, execute PromQL queries, manage alerts, and more directly from Cursor.
+
+**Prerequisites:**
+- Cursor IDE installed
+- Grafana MCP server running (automatically started with the pipeline)
+
+**Setup Steps:**
+
+1. **Locate or create the MCP configuration file:**
+   - The MCP configuration file should be located at `~/.cursor/mcp.json` (global configuration)
+   - Or in your project root at `.cursor/mcp.json` (project-specific)
+
+2. **Add Grafana MCP Server configuration:**
+   
+   Open `~/.cursor/mcp.json` and add the following configuration:
+
+   ```json
+   {
+     "mcpServers": {
+       "grafana": {
+         "command": "docker",
+         "args": [
+           "run",
+           "--rm",
+           "-i",
+           "--network",
+           "host",
+           "-e",
+           "GRAFANA_URL",
+           "-e",
+           "GRAFANA_USERNAME",
+           "-e",
+           "GRAFANA_PASSWORD",
+           "-e",
+           "GRAFANA_ORG_ID",
+           "mcp/grafana:latest",
+           "-t",
+           "stdio"
+         ],
+         "env": {
+           "GRAFANA_URL": "http://localhost:3000",
+           "GRAFANA_USERNAME": "mopadmin",
+           "GRAFANA_PASSWORD": "moppassword",
+           "GRAFANA_ORG_ID": "1"
+         }
+       }
+     }
+   }
+   ```
+
+   **Alternative: Using the binary directly (if installed):**
+   
+   If you have the `mcp-grafana` binary installed, you can use this simpler configuration:
+
+   ```json
+   {
+     "mcpServers": {
+       "grafana": {
+         "command": "mcp-grafana",
+         "args": [],
+         "env": {
+           "GRAFANA_URL": "http://localhost:3000",
+           "GRAFANA_USERNAME": "mopadmin",
+           "GRAFANA_PASSWORD": "moppassword",
+           "GRAFANA_ORG_ID": "1"
+         }
+       }
+     }
+   }
+   ```
+
+   To install the binary:
+   - Download from [Grafana MCP releases](https://github.com/grafana/mcp-grafana/releases)
+   - Extract and add to your PATH
+   - Or install via Go: `go install github.com/grafana/mcp-grafana/cmd/mcp-grafana@latest`
+
+3. **Restart Cursor:**
+   - After saving the configuration, restart Cursor to apply the changes
+
+4. **Verify the connection:**
+   - Once Cursor restarts, the Grafana MCP server should be available
+   - You can now ask Cursor to interact with your Grafana instance, such as:
+     - "List all dashboards"
+     - "Query Prometheus metrics"
+     - "Show me alert rules"
+     - "Get dashboard details"
+
+**What you can do with Grafana MCP Server:**
+- Search and retrieve dashboard information
+- Execute PromQL queries against Prometheus datasources
+- Query Loki logs using LogQL
+- List and manage alert rules
+- Create and update dashboards
+- Manage annotations
+- And much more!
+
+For more information, see the [Grafana MCP Server documentation](https://github.com/grafana/mcp-grafana).
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### Install a node exporter on your host machine for exporting your machine system stats
