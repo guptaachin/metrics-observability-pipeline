@@ -1,5 +1,5 @@
 # Grafana latest docker image https://hub.docker.com/r/grafana/grafana-enterprise/tags
-FROM grafana/grafana-enterprise:12.4.0-20151846001-ubuntu
+FROM grafana/grafana-enterprise:12.4.0-20904407122-ubuntu
 
 COPY grafana.ini /etc/grafana/grafana.ini
 
